@@ -1,7 +1,7 @@
 import express, { Application, Router } from 'express';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
-import bodyParser = require('body-parser');
+import bodyParser from 'body-parser';
 import route from './routers/Routes';
 import mongoose from 'mongoose';
 
@@ -15,17 +15,37 @@ const SERVER = new Server();
 SERVER.app.use(cors({ origin: true }));
 
 // Allowing body-parsers
-SERVER.app.use(bodyParser.json());
+SERVER.app.use(express.json());
 SERVER.app.use(bodyParser.urlencoded({ extended: true }));
 
 dotenv.config();
 const PORT = process.env.PORT || 3303;
-SERVER.app.listen(PORT, async () => {
-  console.log(`Listening on port http://localhost:${PORT}`);
-  mongoose.set('strictQuery', true);
-  mongoose.connect('http://localhost:27017/complainify', () => {
-    console.log('connected');
+mongoose.set('strictQuery', true);
+
+// MongoDB
+
+const URI = 'mongodb://localhost:27017/complainify';
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000,
+  autoIndex: false, // Don't build indexes
+  maxPoolSize: 10, // Maintain up to 10 socket connections
+  socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+  family: 4, // Use IPv4, skip trying IPv6
+};
+
+mongoose
+  .connect(URI, options)
+  .then(() => {
+    console.log('connected to db');
+
+    SERVER.app.listen(PORT, () => {
+      console.log(`Listening on http://localhost:${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log('error');
   });
-});
 
 SERVER.app.use('/api', SERVER.router);
