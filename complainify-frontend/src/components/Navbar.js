@@ -8,7 +8,7 @@ const Navbar = () => {
           <img
             src="https://flowbite.com/docs/images/logo.svg"
             className="h-6 mr-3 sm:h-9"
-            alt="Flowbite Logo"
+            alt="Logo"
           />
           <span
             className="self-center text-3xl font-semibold whitespace-nowrap dark:text-white text-gray-700"
@@ -17,25 +17,60 @@ const Navbar = () => {
             Complainify
           </span>
         </a>
-        <div className="flex md:order-2">
+        <div class="flex items-center md:order-2">
           <button
             type="button"
-            class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
+            data-dropdown-toggle="language-dropdown-menu"
+            class="inline-flex items-center justify-center p-2 text-sm text-gray-500 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white font-medium"
           >
-            Login
+            English
           </button>
+          <div
+            class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700"
+            id="language-dropdown-menu"
+          >
+            <ul class="py-1" role="none">
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                  role="menuitem"
+                >
+                  <div class="inline-flex items-center">English</div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                  role="menuitem"
+                >
+                  <div class="inline-flex items-center">Hindi</div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                  role="menuitem"
+                >
+                  <div class="inline-flex items-center">Odia</div>
+                </a>
+              </li>
+            </ul>
+          </div>
           <button
-            data-collapse-toggle="navbar-sticky"
+            data-collapse-toggle="mobile-menu-language-select"
             type="button"
-            className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-sticky"
+            class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="mobile-menu-language-select"
             aria-expanded="false"
           >
-            <span className="sr-only">Open main menu</span>
+            <span class="sr-only">Open main menu</span>
             <svg
-              className="w-6 h-6"
-              aria-hidden="true"
+              class="w-6 h-6"
               fill="currentColor"
+              aria-hidden="true"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
             >
