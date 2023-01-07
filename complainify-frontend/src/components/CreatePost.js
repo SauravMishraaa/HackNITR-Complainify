@@ -1,10 +1,17 @@
-import React from "react";
-
+import React from 'react';
+import { Outlet, Link } from 'react-router-dom';
 const CreatePost = () => {
   return (
-    <div className="bg-white w-1/5 shadow-lg rounded-lg ">
-      <p>Create Post</p>
-    </div>
+    <>
+      <>
+        <Link
+          to={'/create'}
+          className='bg-white w-1/5 shadow-lg rounded-lg cursor-pointer'>
+          <p>Create Post</p>
+        </Link>
+      </>
+      <Outlet />
+    </>
   );
 };
 
